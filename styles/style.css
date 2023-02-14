@@ -1,0 +1,247 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap');
+:root{
+    --linear-grad-color: linear-gradient(to right, #3eadcf, #51becf, #6ccdce, #8bdbcd, #abe9cd);
+    --bg-color: #F2F3FB;
+    --plain-color: white;
+    --semi-white-color: #F2F3FB;
+}
+
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0 auto;
+    max-height: 100vh;
+    overflow: hidden;
+    width: 100%;
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--bg-color);
+    position: relative;
+}
+
+/* header section */
+
+header{
+    width: 100%;
+    background-image: var(--linear-grad-color);
+    padding: 1em 2em 2em 2em;
+}
+
+.header{
+    margin: 0 auto;
+    width: 50%;
+    min-width: 500px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    justify-content: space-evenly;
+    font-size: 1.3rem;
+    color: var(--plain-color);
+    margin-top: 0;
+}
+
+.points{
+    position: relative;
+    font-size: 1.2em;
+    font-weight: 400;
+}
+
+.points-value{
+    position: absolute;
+    top: 0;
+}
+
+.points-text{
+    font-size: 1.1rem;
+    font-weight: 300;
+    position: absolute;
+    top: 4px;
+    margin-left: 1em;
+}
+
+#material-symbol{
+    font-size: 2rem;
+}
+
+@media(max-width: 500px){
+    header{
+        padding: 2em 0;
+    }
+    .header{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        min-width: 380px;
+    }
+
+    .points{
+        transform: translateX(-1.25em);
+    }
+
+}
+
+/*  Question div */
+.container{
+    width: 50%;
+    min-width: 350px;
+    margin: 0 auto;
+    padding: 1.5em 2.5em;
+    position: absolute;
+    top: 82%;
+    left: 25%;
+    background-color: var(--semi-white-color);
+    box-shadow:
+        0.7px 1px 11px rgba(0, 0, 0, 0.013),
+        1.7px 2.5px 23.3px rgba(0, 0, 0, 0.021),
+        3.4px 5.1px 39.9px rgba(0, 0, 0, 0.028),
+        6.9px 10.6px 68.7px rgba(0, 0, 0, 0.037),
+        19px 29px 153px rgba(0, 0, 0, 0.08);
+}
+
+.quizy-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.question-module{
+    font-size: 1.5rem;
+    color:#B2C4CA;
+    width: 90%;
+    margin-left: .5em;
+}
+
+.question-title{
+    font-size: 2rem;
+    color: #6A6E6F;
+    font-weight: 500;
+    margin: 0.6rem 0;
+    margin-left: .3em;
+}
+
+.ans-option-title{
+    font-size: 1.3rem;
+    font-weight: 300;
+    color: #96999C;
+    margin-top: 2em;
+    width: 90%;
+    margin-left: .5em;
+}
+
+/* Input answer */
+.input-container{
+    position: relative;
+    margin: .4em 0;
+    color: #6A6E6F;
+}
+
+.input-container input{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    opacity: 0;
+}
+
+.input-container .radio-tile{
+    width: 100%;
+    height: 20%;
+    border-radius: 10px;
+    padding: 1rem;
+    transition: all .3s ease;
+}
+
+.input-container .radio-tile label{
+    font-size: 1.3rem;
+    color: #6A6E6F;
+}
+
+input:checked + .radio-tile{
+    background-image: var(--linear-grad-color);
+    box-shadow:
+    1.1px 1.5px 5.3px rgba(0, 0, 0, 0.028),
+    3px 4.1px 15.8px rgba(0, 0, 0, 0.04),
+    7.2px 9.9px 38.2px rgba(0, 0, 0, 0.052),
+    24px 33px 110px rgba(0, 0, 0, 0.08);
+}
+
+input:checked + .radio-tile label{
+    color: var(--plain-color);
+}
+
+input:checked + .radio-tile.active{
+    background-image: none;
+    background-color: #4C9A2A;
+}
+
+input:checked + .radio-tile.incorrect{
+    background-image: none;
+    background-color: #b30000;
+}
+
+.radio-tile.active{
+    background-image: none;
+    background-color: #4C9A2A;
+}
+
+.radio-tile.active label{
+    color: white;
+}
+
+.input-container .radio-tile .radio-opt{
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin: 0 .3em;
+}
+
+/* Submit Button */
+.btn-submit{
+    width: 20%;
+    padding: 1rem;
+    font-size: 1.1rem;
+    color: var(--plain-color);
+    border: 0;
+    background-color: #3eadcf;
+    border-radius: 10px;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin: .8em auto;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Responsive Media */
+@media(max-width: 480px){
+    body{
+        overflow: scroll;
+    }
+
+    .container{
+        top: 90%;
+        left: 5%;
+        margin-bottom: 1em;
+    }
+
+    .question-module, .question-title{
+        font-size: 1rem;
+    }
+
+    .question-title{
+        font-size: 1.5rem;
+    }
+
+    .input-container .radio-tile label{
+        font-size: 1rem;
+    }
+
+    .btn-submit{
+        width: 50%;
+        font-size: .8rem;
+    }
+}

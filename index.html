@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/site.webmanifest">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,700,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,700,0,0" />
+
+    <title>Quizy</title>
+</head>
+<body>
+    <header>
+        <div class="header">
+            <h1>Quizy</h2>
+            <div class="points">
+                <span class="material-symbols-outlined" id="material-symbol">done</span><span class="points-value" id="correct-points"></span>
+                <span class="points-text">correct</p>
+            </div>
+            <div class="points">
+                <span class="material-symbols-outlined" id="material-symbol">close</span><span class="points-value" id="incorrect-points"></span>
+                <span class="points-text">wrong</span>
+            </div>  
+        </div> 
+    </header>
+    <div class="container">
+        <div class="quizy-container">
+            <p class="question-module" id="questions-module"></p>
+            <p class="question-title" id="questions"></p>
+            <p class="ans-option-title">Answer Options</p>
+            <div class="input-container">
+                <input type="radio" name="answer" value="" id="a">
+                <div class="radio-tile">
+                    <label class="radio-opt" for="opt-a">A.</label><label for="ans" id="answer"></label>
+                </div>
+            </div>
+            <div class="input-container">
+                <input type="radio" name="answer" id="b">
+                <div class="radio-tile">
+                    <label class="radio-opt" for="opt-b">B.</label><label for="answer" id="answer"></label>
+                </div>
+            </div>
+            <div class="input-container">
+                <input type="radio" name="answer" id="c">
+                <div class="radio-tile">
+                    <label class="radio-opt" for="opt-c">C.</label><label for="answer" id="answer"></label>
+                </div>
+            </div>
+            <div class="input-container">
+                <input type="radio" name="answer" id="d">
+                <div class="radio-tile">
+                    <label class="radio-opt" for="opt-d">D.</label><label for="answer" id="answer"></label>
+                </div>
+            </div>
+            <button class="btn-submit" id="btn-submit">Send Answer</button>
+        </div>
+    </div>
+
+    <!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script> 
+    <script src="scripts/app-functions.js"></script> -->
+    <!-- <script src="scripts/app.js"></script>  -->
+    <script src="scripts/bundle.js"></script>
+</body>
+</html>
