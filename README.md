@@ -1,5 +1,5 @@
 # Quizy
-. #Javascript #Webpack #Html #CSS
+
 <p align="center">
   <img src="favicon/Main_logo.png">
 </p>
