@@ -225,7 +225,7 @@ input:checked + .radio-tile.incorrect{
     .container{
         top: 90%;
         left: 5%;
-        margin-bottom: 1em;
+        margin-bottom: 1.3em;
     }
 
     .question-module, .question-title{
