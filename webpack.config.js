@@ -4,7 +4,7 @@ const path = require('path')
 module.exports = {
     entry: ['@babel/polyfill','./src/index.js'],
     output: {
-        path: path.resolve(__dirname, 'public/scripts'),
+        path: path.resolve(__dirname, 'scripts'),
         filename: 'bundle.js'
     },
     module: {
@@ -24,7 +24,7 @@ module.exports = {
     },
     devServer:{
         static: {
-            directory: path.join(__dirname, 'public')
+            directory: path.join(__dirname, 'scripts')
         },
         port: 8080,
         devMiddleware: {
