@@ -59,7 +59,6 @@ const getQuiz = async () => {
         errorText.style.textAlign = 'center'
         errorText.textContent = "Cannot Fetch Data. Please try again Later."
         document.querySelector('.container').appendChild(errorText)
-        //TODO: Disable other container and visible only error.
     }
     
 }
