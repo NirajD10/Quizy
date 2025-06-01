@@ -1,3 +1,9 @@
+/**
+ * @file Quizy Application
+ * @author Niraj Deshmukh
+ * @see <a href="https://github.com/NirajD10" target="_blank" rel="noopener noreferrer">Visit Github Profile</a>
+ */
+
 import swal from 'sweetalert';
 import  { retrieveData,  storeVariablefromStorage, checkAnswer, gameover, questionNum} from './app-functions';
 

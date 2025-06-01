@@ -14,7 +14,10 @@ let correctpoints
 let incorrectpoints
 
 
-//Retrieve Data from API and save session storage
+/**
+ * This function represents to Retrieve Data from API and save session storage
+ * @returns {void} - render DOM after finalize logic
+ */
 const retrieveData = async () => {
     if(ReadQuizData() === true){
         const quizData = await getQuiz()
@@ -26,7 +29,10 @@ const retrieveData = async () => {
     }
 }
 
-//Read and check sessionstorage item is have or not
+/**
+ * This function represent as read and find sessionstorage item exists or not
+ * @returns {boolean} - whether it exists will return true else false
+ */
 const ReadQuizData = () => {
     const JSONData = sessionStorage.getItem('quiz')
 
@@ -37,12 +43,26 @@ const ReadQuizData = () => {
     }
 }
 
-//save session storage
+/**
+ * Saves an array of objects to session storage under the given name.
+ * @param {string} name - The key under which the data will be stored in sessionStorage.
+ * @param {Array<Object>} item - An array of object data to be stored.
+ * @returns {void}
+ */
 const saveQuizStorage = (name, item) => {
     return sessionStorage.setItem(name,JSON.stringify(item))
 }
 
-//fetch question api
+
+/**
+ * Fetches a quiz from the Open Trivia Database API.
+ *
+ * Makes an HTTP request to retrieve 10 easy multiple-choice questions.
+ * On success, returns the data as a JSON-formatted string.
+ * On failure, logs the error and displays a message in the UI.
+ *
+ * @returns {Promise<string|undefined>} A promise that resolves to a JSON string of quiz data, or `undefined` if an error occurs.
+ */
 const getQuiz = async () => {
     try{
         const response = await fetch('https://opentdb.com/api.php?amount=10&difficulty=easy&type=multiple')
@@ -63,7 +83,14 @@ const getQuiz = async () => {
     
 }
 
-//get question api and initilize new array-objects
+
+/**
+ * Initializes quiz objects, shuffles answers, encrypts the correct answer,
+ * and saves the quiz list to session storage.
+ *
+ * @param {Array<Object>} quiz - The quiz data retrieved from the API.
+ * @returns {void}
+ */
 const initializeObjects = (quiz) =>{
     quiz.forEach(element => {
         let answerSet = element.incorrect_answers
@@ -83,7 +110,13 @@ const initializeObjects = (quiz) =>{
     saveQuizStorage('quiz',quizSet)
 }
 
-//get items from sessionstorage
+/**
+ * Retrieve data from session storage base on key
+ * if found, will return to parsed JSON data,
+ * otherwise will return empty array
+ * @param {string} items - A key for retrieve session storage data
+ * @returns {void | Array[]}
+ */
 const storeVariablefromStorage = (items) => {
     const quizt = sessionStorage.getItem(items)
 
@@ -96,7 +129,10 @@ const storeVariablefromStorage = (items) => {
 }
 
 
-//render all dom questions and answer
+/**
+ * This function represent to render update DOM
+ * @returns {void}
+ */
 const renderDOM = () => {
     
     if(questionNum === 0){
@@ -128,13 +164,20 @@ const renderDOM = () => {
     })
 }
 
-//replace encoding to string questions text.
+/**
+ * replace html encoding string into string text.
+ * @param {string} str 
+ * @returns {string}
+ */
 const htmlEntities = (str) =>{
     return str.replaceAll('&quot;','\"').replaceAll('&amp;','\&').replaceAll('&#039;','\'').replaceAll('&eacute;','É').replaceAll('&rsquo;','\'')
 }
 
-//update quizzy currentpage, correct and incorrect points 
-    
+
+/**
+ * The function update data results of currentpage, correct and incorrect points
+ * @returns {void}
+ */    
 const updateQuizzyResults = () =>{
 
     if(sessionStorage.getItem('quizzygame')){
@@ -153,7 +196,11 @@ const updateQuizzyResults = () =>{
     
 }
 
-//render quizzy currentpage, correct and incorrect points 
+/**
+ * A function to render UI for currentpage, correct and incorrect points
+ * also update data in session Storage
+ * @returns {void}
+ */ 
 const QuizzyrenderResults = () => {
 
     correctPoint.textContent = correctpoints
@@ -166,7 +213,10 @@ const QuizzyrenderResults = () => {
     saveQuizStorage('quizzygame',quizyResults)
 }
 
-//render and fetch 'questionNum' for current page when we referesh it
+/**
+ * A function to retrieve from session storage and fetch current stage questions
+ * @returns {number} - fetch current stage question number
+ */
 const renderCurrentPage = () => {
     const checkcurrentpage = sessionStorage.getItem('quizzygame')
     
@@ -179,7 +229,11 @@ const renderCurrentPage = () => {
 
 }
 
-//fetch game points from SessionStorage
+/**
+ * A function to fetch specific type of points from session storage
+ * @param {string} options 
+ * @returns {number} - points
+ */
 const renderQuizyPoints = (options) => {
     const checkpoints = sessionStorage.getItem('quizzygame')
 
@@ -197,7 +251,11 @@ const renderQuizyPoints = (options) => {
 
 }
 
-//Fisher-Yeates Shuffle Alogrithm for array shuffle
+/**
+ * This function represent Fisher-Yeates Shuffle Alogrithm for array shuffle
+ * @param {Array<string>} answerSet 
+ * @returns {Array<string>} - shuffled questions and answer including in array
+ */
 const shuffle = (answerSet) => {
     let currentPosition = answerSet.length, randomPosition
     
@@ -211,7 +269,15 @@ const shuffle = (answerSet) => {
     return answerSet
 }
 
-//to check answer is correct or not.
+/**
+ * Checks the selected answer against the correct answer for the current question.
+ * Updates the UI to reflect whether the selected answer is correct or incorrect.
+ * Also manages question progression and scoring.
+ *
+ * @param {HTMLInputElement} answerRadio - The selected radio button input element.
+ * @param {Array<Object>} quizSet - The list of quiz questions with encrypted correct answers.
+ * @returns {void}
+ */
 const checkAnswer = (answerRadio , quizSet) => {
      
     const bytes = CryptoJS.AES.decrypt(quizSet[questionNum].correct_answer,'quizy')
@@ -264,7 +330,10 @@ const checkAnswer = (answerRadio , quizSet) => {
     }
 }
 
-//To modal up 'Game over'
+/**
+ * To display UI Modal to call game gover
+ * @returns {void}
+ */
 const gameover = () => {
     swal({
         title: 'Game Over',
