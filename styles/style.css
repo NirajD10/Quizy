@@ -68,10 +68,6 @@ header{
 }
 
 @media(max-width: 500px){
-    body{
-        overflow: hidden;
-    }
-    
     header{
         padding: 2em 0;
     }
